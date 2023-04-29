@@ -1,0 +1,5 @@
+environs~=8.0.0
+pip~=19.2.3
+google~=3.0.0
+setuptools~=41.2.0
+aiogram~=2.21
