@@ -1,7 +1,9 @@
 from aiogram import executor
-
-from loader import dp
+from sqlalchemy.orm import sessionmaker
+import time
+from loader import dp, bot, session
 import handlers
+from utils.db_api.postgres import *
 from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
 
