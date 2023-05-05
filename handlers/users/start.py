@@ -23,3 +23,8 @@ async def bot_start(message: types.Message):
     else:
         await message.answer(f"Радий знову вітати, {message.from_user.full_name}! Для вибору категорій новин, \
 /choose_categories")
+
+
+@dp.message_handler(state=None)
+async def bot_no_state(message: types.Message):
+    await message.answer("Ви ще не почали роботу з ботом, або сесія була завершена! /start - запустити бота")

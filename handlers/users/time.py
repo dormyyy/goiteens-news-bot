@@ -29,7 +29,7 @@ async def bot_сhoose_time(message: types.Message):
 @dp.callback_query_handler(text='cancel', state=States.timeState)
 async def bot_cancel_time(callback_query: types.CallbackQuery):
     await bot.send_message(callback_query.from_user.id,
-                           "Час отримання не змінено. Чекайте на ваші новини!")
+                           "Час отримання не змінено. Чекайте на ваші новини, або /get_news - отримати їх негайно!")
     await States.startState.set()
 
 
@@ -47,4 +47,5 @@ async def bot_сhange_time(callback_query: types.CallbackQuery):
     session.commit()
     await States.startState.set()
     await bot.send_message(callback_query.from_user.id,
-                           f"Час отримання змінено на {times.get(time)}. Чекайте на ваші новини!")
+                           f"Час отримання змінено на {times.get(time)}.\
+Чекайте на ваші новини, або /get_news - отримати їх негайно!")

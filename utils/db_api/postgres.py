@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, BigInteger, Integer, String, Boolean, ForeignKey
+from sqlalchemy import create_engine, Column, BigInteger, Integer, String, Boolean, ForeignKey, Text, Table
 from sqlalchemy.orm import declarative_base
 from environs import Env
 
@@ -23,6 +23,7 @@ class User(Base):
     username = Column(String, nullable=True)
     subscribed = Column(Boolean, nullable=False, default=True)
     notification_time = Column(Integer, nullable=True, default=9)
+    current_news_id = Column(BigInteger, default=0, nullable=True)
 
 
 class Category(Base):
@@ -35,8 +36,23 @@ class Category(Base):
 class UserCategory(Base):
     __tablename__ = 'user_categories'
     id = Column(BigInteger, primary_key=True)
-    user_id = Column(Integer, ForeignKey(User.id))
-    category_id = Column(Integer, ForeignKey(Category.id))
+    user_id = Column(BigInteger, ForeignKey(User.id))
+    category_id = Column(BigInteger, ForeignKey(Category.id))
+
+
+class News(Base):
+    __tablename__ = 'news'
+    id = Column(BigInteger, primary_key=True)
+    category_id = Column(BigInteger, ForeignKey(Category.id))
+    news = Column(Text, nullable=True)
+    user_added_id = Column(BigInteger, default=0, nullable=True)
+
+
+class UserNews(Base):
+    __tablename__ = 'user_news'
+    id = Column(BigInteger, primary_key=True)
+    user_id = Column(BigInteger, ForeignKey(User.id))
+    news_id = Column(BigInteger, ForeignKey(News.id))
 
 
 Base.metadata.create_all(ENGINE)

@@ -6,3 +6,4 @@ class States(StatesGroup):
     categoryState = State()
     timeState = State()
     subscriptionState = State()
+    newsState = State()

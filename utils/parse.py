@@ -201,3 +201,7 @@ def odesa():
         except:
             continue
     return messages
+
+
+func_list = [(name, obj) for name, obj in vars().items()
+                 if hasattr(obj, "__class__") and obj.__class__.__name__ == "function"]

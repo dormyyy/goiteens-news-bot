@@ -11,6 +11,7 @@ async def bot_help(message: types.Message):
             "/help - Отримати поміч",
             "/choose_categories - Обрати категорії новин",
             "/choose_time - Обрати час отримання новин",
-            "/subscription - Налаштувати отримання новин")
+            "/subscription - Налаштувати отримання новин",
+            "/get_news - Отримати новини негайно")
 
     await message.answer("\n".join(text))

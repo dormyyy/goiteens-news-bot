@@ -31,7 +31,7 @@ async def bot_subscription(message: types.Message):
 @dp.callback_query_handler(text='cancel', state=States.subscriptionState)
 async def bot_cancel_bot_subscription(callback_query: types.CallbackQuery):
     await bot.send_message(callback_query.from_user.id,
-                           "Повідомлення не змінені. Чекайте своїх новин!")
+                           "Повідомлення не змінені. Чекайте своїх новин, або /get_news - отримати їх негайно!")
     await States.startState.set()
 
 
