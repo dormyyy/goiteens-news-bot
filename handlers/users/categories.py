@@ -1,3 +1,4 @@
+import aiogram.utils.exceptions
 from aiogram import types
 from states.states import States
 from loader import dp, bot, session
@@ -53,5 +54,8 @@ async def bot_сhange_category(callback_query: types.CallbackQuery):
         ], resize_keyboard=True
     )
     keyboard.inline_keyboard.extend([[types.InlineKeyboardButton(text='Зберегти', callback_data='cancel')]])
-    await bot.edit_message_reply_markup(callback_query.message.chat.id, callback_query.message.message_id,
+    try:
+        await bot.edit_message_reply_markup(callback_query.message.chat.id, callback_query.message.message_id,
                                         reply_markup=keyboard)
+    except aiogram.utils.exceptions.MessageNotModified:
+        pass

@@ -46,6 +46,7 @@ class News(Base):
     category_id = Column(BigInteger, ForeignKey(Category.id))
     news = Column(Text, nullable=True)
     user_added_id = Column(BigInteger, default=0, nullable=True)
+    required_time = Column(Integer, default=0, nullable=True)
 
 
 class UserNews(Base):
