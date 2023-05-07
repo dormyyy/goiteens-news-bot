@@ -7,3 +7,5 @@ class States(StatesGroup):
     timeState = State()
     subscriptionState = State()
     newsState = State()
+    ready_newsState = State()
+    planned_newsState = State()
