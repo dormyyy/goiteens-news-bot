@@ -5,4 +5,3 @@ env.read_env()
 
 TOKEN = env.str("TOKEN")
 ADMINS = env.list("ADMINS")
-HOST = env.str("HOST")

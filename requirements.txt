@@ -23,3 +23,4 @@ schedule==1.2.0
 soupsieve==2.4.1
 SQLAlchemy==1.4.48
 yarl==1.9.2
+requests==2.30.0
