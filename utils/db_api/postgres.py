@@ -5,12 +5,6 @@ from environs import Env
 env = Env()
 env.read_env()
 
-user = env.str('DB_USER')
-password = env.str('DB_PASSWORD')
-host = env.str('HOST')
-database = env.str('DB_NAME')
-port = env.str('PORT')
-
 ENGINE = create_engine(env.str("DB_URL"))
 
 Base = declarative_base()
