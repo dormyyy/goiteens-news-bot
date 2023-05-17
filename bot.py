@@ -122,4 +122,4 @@ def run_schedule():
 if __name__ == '__main__':
     executor_news = Thread(target=run_schedule, args=())
     executor_news.start()
-    executor.start_polling(dp, on_startup=on_startup)
+    executor.start_polling(dp, on_startup=on_startup, skip_updates=True)
