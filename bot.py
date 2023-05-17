@@ -17,11 +17,9 @@ async def on_startup(dispatcher):
     await set_default_commands(dispatcher)
     await on_startup_notify(dispatcher)
 
-# os.environ['TZ'] = "Europe/Kyiv"
-# time.tzset()
-os.system('tzutil /s "Europe/Kyiv"')
 
-loop = asyncio.get_event_loop()
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
 
 
 def get_user_ids(time) -> list:
