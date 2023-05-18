@@ -82,7 +82,7 @@ async def load_17():
 
 
 def news_17():
-    send_fut = asyncio.run_coroutine_threadsafe(load_21(), loop)
+    send_fut = asyncio.run_coroutine_threadsafe(load_17(), loop)
     send_fut.result()
 
 
@@ -93,7 +93,7 @@ async def load_13():
 
 
 def news_13():
-    send_fut = asyncio.run_coroutine_threadsafe(load_21(), loop)
+    send_fut = asyncio.run_coroutine_threadsafe(load_13(), loop)
     send_fut.result()
 
 
@@ -104,7 +104,7 @@ async def load_9():
 
 
 def news_9():
-    send_fut = asyncio.run_coroutine_threadsafe(load_21(), loop)
+    send_fut = asyncio.run_coroutine_threadsafe(load_9(), loop)
     send_fut.result()
 
 
