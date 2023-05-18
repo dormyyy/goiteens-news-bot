@@ -17,11 +17,9 @@ async def on_startup(dispatcher):
     await set_default_commands(dispatcher)
     await on_startup_notify(dispatcher)
 
-# os.environ['TZ'] = "Europe/Kyiv"
-# time.tzset()
-os.system('tzutil /s "Europe/Kyiv"')
 
-loop = asyncio.get_event_loop()
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
 
 
 def get_user_ids(time) -> list:
@@ -122,4 +120,4 @@ def run_schedule():
 if __name__ == '__main__':
     executor_news = Thread(target=run_schedule, args=())
     executor_news.start()
-    executor.start_polling(dp, on_startup=on_startup)
+    executor.start_polling(dp, on_startup=on_startup, skip_updates=True)

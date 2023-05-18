@@ -5,13 +5,9 @@ from environs import Env
 env = Env()
 env.read_env()
 
-user = env.str('DB_USER')
-password = env.str('DB_PASSWORD')
-host = env.str('HOST')
-database = env.str('DB_NAME')
-port = env.str('PORT')
+con_string = env.str("DATABASE_URL")
 
-ENGINE = create_engine(env.str("DB_URL"))
+ENGINE = create_engine(con_string.replace('postgres', 'postgresql'))
 
 Base = declarative_base()
 
