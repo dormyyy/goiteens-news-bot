@@ -33,6 +33,11 @@ async def bot_no_state(message: types.Message):
     await message.answer("Ви ще не почали роботу з ботом, або сесія була завершена! /start - запустити бота")
 
 
+@dp.message_handler(commands=['start', 'get_news', 'choose_categories', 'choose_time', 'subscription'], state='*')
+async def bot_none(message: types.Message):
+    await message.answer('Ви уже працюєте з функціоналом, щоб викликати цю команду, завершіть активну дію!')
+
+
 @dp.message_handler(state='*')
 async def bot_none(message: types.Message):
     await message.answer('Це не команда! Спробуйте /help або /start')
@@ -40,4 +45,4 @@ async def bot_none(message: types.Message):
 
 @dp.callback_query_handler(lambda x: x.data, state='*')
 async def bot_callback_none(callback_query: types.CallbackQuery):
-    await bot_a.send_message(callback_query.from_user.id, 'Ця дія більше не активна, Спробуйте /help або /start')
+    await bot_a.send_message(callback_query.from_user.id, 'Ця дія більше не активна! Спробуйте /help або /start')
