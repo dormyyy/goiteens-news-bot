@@ -1,7 +1,10 @@
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
+
+import bot
 from states.states import States
 from loader import dp, session
+from loader import bot as bot_a
 from utils.db_api.postgres import *
 
 
@@ -33,3 +36,8 @@ async def bot_no_state(message: types.Message):
 @dp.message_handler(state='*')
 async def bot_none(message: types.Message):
     await message.answer('Це не команда! Спробуйте /help або /start')
+
+
+@dp.callback_query_handler(lambda x: x.data)
+async def bot_callback_none(callback_query: types.CallbackQuery):
+    await bot_a.send_message(callback_query.from_user.id, 'Ця дія більше не активна, Спробуйте /help або /start')
