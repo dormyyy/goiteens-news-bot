@@ -28,3 +28,8 @@ async def bot_start(message: types.Message):
 @dp.message_handler(state=None)
 async def bot_no_state(message: types.Message):
     await message.answer("Ви ще не почали роботу з ботом, або сесія була завершена! /start - запустити бота")
+
+
+@dp.message_handler(state='*')
+async def bot_none(message: types.Message):
+    await message.answer('Це не команда! Спробуйте /help або /start')

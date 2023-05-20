@@ -61,7 +61,7 @@ async def send(user_ids):
             await bot.send_message(user, "Ваші новини готові!", reply_markup=confirmation)
         else:
             await bot.send_message(user, "Ваші новини не отримані, тому що ви зайняті іншою дією, \
-    або не обрали категорії отримуваних новин(/choose_categories). Після завершення дії, /get_news - отримати свіжі новини!")
+або не обрали категорії отримуваних новин(/choose_categories). Після завершення дії, /get_news - отримати свіжі новини!")
 
 
 async def load_21():

@@ -34,7 +34,7 @@ def kyiv():
                     message += text + '\n'
                 except:
                     pass
-            message = title + '\n\n' + message.rstrip().lstrip() + '\n\n' + date
+            message = title + '\n\n' + message.rstrip().lstrip() + '\n\n' + date + '\n' + url
             messages.append(message)
         except:
             continue
@@ -66,7 +66,7 @@ def lviv():
             message = title + '\n'
             for i in text:
                 message += '\n' + i
-            message = message.rstrip() + '\n\n' + date
+            message = message.rstrip() + '\n\n' + date + '\n' + url
             messages.append(message)
         except:
             continue
@@ -98,7 +98,7 @@ def kharkiv():
             message = title + '\n'
             for i in text:
                 message += '\n' + i
-            message = message.rstrip() + '\n\n' + date
+            message = message.rstrip() + '\n\n' + date + '\n' + url
             messages.append(message)
         except:
             continue
@@ -130,7 +130,7 @@ def vinnytsia():
             message = title + '\n'
             for i in text:
                 message += '\n' + i
-            message = message.rstrip() + '\n\n' + date
+            message = message.rstrip() + '\n\n' + date + '\n' + url
             messages.append(message)
         except:
             continue
@@ -162,7 +162,7 @@ def dnipro():
             message = title + '\n'
             for i in text:
                 message += '\n' + i
-            message = message.rstrip() + '\n\n' + date
+            message = message.rstrip() + '\n\n' + date + '\n' + url
             messages.append(message)
         except:
             continue
@@ -196,7 +196,7 @@ def odesa():
             message = title + '\n'
             for i in text:
                 message += '\n' + i
-            message = message.rstrip() + '\n\n' + date
+            message = message.rstrip() + '\n\n' + date + '\n' + url
             messages.append(message)
         except:
             continue
