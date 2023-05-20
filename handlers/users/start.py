@@ -38,6 +38,6 @@ async def bot_none(message: types.Message):
     await message.answer('Це не команда! Спробуйте /help або /start')
 
 
-@dp.callback_query_handler(lambda x: x.data)
+@dp.callback_query_handler(lambda x: x.data, state='*')
 async def bot_callback_none(callback_query: types.CallbackQuery):
     await bot_a.send_message(callback_query.from_user.id, 'Ця дія більше не активна, Спробуйте /help або /start')
