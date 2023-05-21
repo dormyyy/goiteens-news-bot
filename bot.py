@@ -41,7 +41,7 @@ def load_news(time: int):
     session.commit()
     for category, news_list in news.items():
         for i, new in enumerate(news_list):
-            if i == 5:
+            if i >= 5:
                 break
             new_new = News(
                 category_id=categories[category].id,

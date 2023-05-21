@@ -28,13 +28,14 @@ async def bot_get_planned_news(callback_query: types.CallbackQuery):
         return
     user = session.query(User).filter_by(telegram_id=callback_query.from_user.id).first()
     user_categories = [i.category_id for i in session.query(UserCategory).filter_by(user_id=user.id).all()]
-    for new in session.query(News).filter(News.category_id.in_(user_categories), News.user_added_id == 0).all():
-        new_user_new = UserNews(
-            user_id=user.id,
-            news_id=new.id
-        )
-        session.add(new_user_new)
-        session.commit()
+    for new in session.query(News).filter_by(user_added_id=0).all():
+        if new.category_id in user_categories:
+            new_user_new = UserNews(
+                user_id=user.id,
+                news_id=new.id
+            )
+            session.add(new_user_new)
+            session.commit()
     user_news = session.query(News).filter(News.id.in_(
         [i.news_id for i in session.query(UserNews).filter_by(user_id=user.id).all()]
     )).order_by(News.category_id).all()
