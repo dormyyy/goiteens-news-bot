@@ -34,7 +34,7 @@ def load_news(time: int):
     for name, func in funcs:
         if name in news.keys():
             news[name] = func()
-    old_news = session.query(News).filter_by(required_time=str(time), user_added_id=0)
+    old_news = session.query(News).filter_by(required_time=time, user_added_id=0)
     old_news_id = [i.id for i in old_news.all()]
     session.query(UserNews).filter(UserNews.news_id.in_(old_news_id)).delete()
     old_news.delete()
