@@ -34,11 +34,28 @@ def load_news(time: int):
     for name, func in funcs:
         if name in news.keys():
             news[name] = func()
+    # останній шанс на працююче видалення новин {
     old_news = session.query(News).filter_by(required_time=time, user_added_id=0)
-    old_news_id = [i.id for i in old_news.all()]
-    session.query(UserNews).filter(UserNews.news_id.in_(old_news_id)).delete()
+    old_news_id_str = [str(i.id) for i in old_news.all()]
+    old_news_id_int = [i.id for i in old_news.all()]
+    old_user_news = session.query(UserNews).all()
+    for user_new in old_user_news:
+        if user_new.news_id in old_news_id_str or user_new.news_id in old_news_id_int:
+            session.query(UserNews).filter_by(id=user_new.id).delete()
+            session.commit()
     old_news.delete()
     session.commit()
+    old_news = session.query(News).filter_by(required_time=str(time), user_added_id=0)
+    old_news_id_str = [str(i.id) for i in old_news.all()]
+    old_news_id_int = [i.id for i in old_news.all()]
+    old_user_news = session.query(UserNews).all()
+    for user_new in old_user_news:
+        if user_new.news_id in old_news_id_str or user_new.news_id in old_news_id_int:
+            session.query(UserNews).filter_by(id=user_new.id).delete()
+            session.commit()
+    old_news.delete()
+    session.commit()
+    # }
     for category, news_list in news.items():
         for i, new in enumerate(news_list):
             if i >= 5:
