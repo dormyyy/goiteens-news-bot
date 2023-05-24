@@ -30,7 +30,7 @@ async def bot_get_planned_news(callback_query: types.CallbackQuery):
     user_categories = [i.category_id for i in session.query(UserCategory).filter_by(user_id=user.id).all()]
     session.query(UserNews).filter_by(user_id=user.id).delete()
     session.commit()
-    for new in session.query(News).filter_by(user_added_id=0).all():
+    for new in session.query(News).filter_by(user_added_id=0, required_time=user.notification_time).all():
         if new.category_id in user_categories:
             new_user_new = UserNews(
                 user_id=user.id,
