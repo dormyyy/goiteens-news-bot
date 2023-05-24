@@ -82,9 +82,17 @@ async def send(user_ids):
 
 
 async def load_21():
-    session.query(News).filter_by(required_time=21).delete()
-    session.query(News).filter_by(required_time='21').delete()
-    session.commit()
+    try:
+        session.query(News).filter_by(required_time=21).delete()
+        session.commit()
+    except:
+        print()
+    try:
+        session.query(News).filter_by(required_time='21').delete()
+        session.commit()
+    except:
+        print()
+
     load_news(21)
     user_ids = get_user_ids(21)
     await send(user_ids)
@@ -96,8 +104,17 @@ def news_21():
 
 
 async def load_17():
-    session.query(News).filter_by(required_time=17).delete()
-    session.query(News).filter_by(required_time='17').delete()
+    try:
+        session.query(News).filter_by(required_time=17).delete()
+        session.commit()
+    except:
+        print()
+    try:
+        session.query(News).filter_by(required_time='17').delete()
+        session.commit()
+    except:
+        print()
+
     session.commit()
     load_news(17)
     user_ids = get_user_ids(17)
@@ -110,9 +127,17 @@ def news_17():
 
 
 async def load_13():
-    session.query(News).filter_by(required_time=13).delete()
-    session.query(News).filter_by(required_time='13').delete()
-    session.commit()
+    try:
+        session.query(News).filter_by(required_time=13).delete()
+        session.commit()
+    except:
+        print()
+    try:
+        session.query(News).filter_by(required_time='13').delete()
+        session.commit()
+    except:
+        print()
+
     load_news(13)
     user_ids = get_user_ids(13)
     await send(user_ids)
@@ -124,9 +149,17 @@ def news_13():
 
 
 async def load_9():
-    session.query(News).filter_by(required_time=9).delete()
-    session.query(News).filter_by(required_time='9`').delete()
-    session.commit()
+    try:
+        session.query(News).filter_by(required_time=9).delete()
+        session.commit()
+    except:
+        print()
+    try:
+        session.query(News).filter_by(required_time='9').delete()
+        session.commit()
+    except:
+        print()
+
     load_news(9)
     user_ids = get_user_ids(9)
     await send(user_ids)
